@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html >
+    <head>
+        <link href="stuff.css" rel="stylesheet" type="text/css"/>
+        <script src="MinimizeFraction.js"></script>
+        <script src="Recursive.js"></script>
+
+        <script>
+            function doMinimize() {
+                var text;
+                var num, den;
+                num = document.getElementById("numeretor").value;
+                den = document.getElementById("denominator").value;
+                text = minimizeFraction(num, den);
+                document.getElementById("res").innerHTML = text;
+            }
+        </script>
+        <script>
+            function doFactor() {
+                var text;
+                var num;
+                num = document.getElementById("factor").value;
+                text = new String(factor(num));
+                document.getElementById("res").innerHTML = text;
+            }
+        </script>
+        <script>
+            function doSuperFactor() {
+                var text;
+                var num;
+                num = document.getElementById("superFactor").value;
+                text = new String(superFactor(num));
+                document.getElementById("res").innerHTML = text;
+            }
+        </script>
+        <script>
+            function getRandomColor() {
+                var letters = '0123456789ABCDEF'.split('');
+                var color = '#';
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+        </script>
+        <title>Fabricated Calculator</title>
+    </head>
+    <body style="font-size: x-large" id = "a">
+        <table align="center">
+            <tr>
+                <td><input id="numeretor" type="number">/<input id ="denominator" type = "number" ></td>
+                <td style="text-align: center"><span ondblclick="document.getElementById('a').style.color = getRandomColor()"
+                                                     onclick="document.getElementById('a').style.backgroundColor = getRandomColor()">Result: <span id="res"></span></span></td>
+                <td><button type="button" onclick="doMinimize()">Minimize This Fraction!</button> </td>
+            </tr>
+            <tr>
+                <td><input id ="factor" type="number"></td>
+                <td></td>
+                <td><button type="button" onclick="doFactor()" >Factor This Thing!</button></td>
+            </tr>
+            <tr>
+                <td><input id="superFactor" type="number"></td>
+                <td></td>
+                <td><button type="button" onclick="doSuperFactor()">Super Factor? What?</button></td>
+            </tr>
+        </table>
+    </body>
+</html>
