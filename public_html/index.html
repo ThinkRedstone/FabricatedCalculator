@@ -48,14 +48,28 @@ and open the template in the editor.
                 return color;
             }
         </script>
+        <script>
+            var KAPPed = 0;
+            var sound = new Audio();
+            function KAPPA() {
+                if (KAPPed === 0) {
+                    KAPPed = 1;
+                    return "url('KAPPA.png')";
+                } else {
+                    KAPPed = 0;
+                    return "url()";
+                }
+            }
+        </script>
         <title>Fabricated Calculator</title>
     </head>
-    <body style="font-size: x-large" id = "a">
-        <table align="center">
+    <body style="font-size: x-large;" id = "body">
+
+        <table class="center">
             <tr>
                 <td><input id="numeretor" type="number">/<input id ="denominator" type = "number" ></td>
-                <td style="text-align: center"><span ondblclick="document.getElementById('a').style.color = getRandomColor()"
-                                                     onclick="document.getElementById('a').style.backgroundColor = getRandomColor()">Result: <span id="res"></span></span></td>
+                <td style="text-align: center"><span ondblclick="document.getElementById('body').style.color = getRandomColor()"
+                                                     onclick="document.getElementById('body').style.backgroundColor = getRandomColor()">Result: <span id="res"></span></span></td>
                 <td><button type="button" onclick="doMinimize()">Minimize This Fraction!</button> </td>
             </tr>
             <tr>
@@ -69,5 +83,9 @@ and open the template in the editor.
                 <td><button type="button" onclick="doSuperFactor()">Super Factor? What?</button></td>
             </tr>
         </table>
+        <br/><br/><br/><br/>
+        <div  style="color: white;text-align: center" onclick="document.body.style.backgroundImage = KAPPA();">KAPPA</div>
+        <img src="" alt=""/>
+
     </body>
 </html>
