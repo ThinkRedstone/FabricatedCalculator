@@ -62,26 +62,33 @@ and open the template in the editor.
                 }
             }
         </script>
+        <script>
+            function changeArrayColor(arr) {
+                for (var i = 0; i < arr.length; i++) {
+                    arr[i].style.color = getRandomColor();
+                }
+            }
+        </script>
         <title>Fabricated Calculator</title>
     </head>
-    <body style="font-size: x-large;" id = "body">
+    <body style="font-size: x-large;" id = "body" class="colorable">
 
         <table class="center">
             <tr>
                 <td><input id="numeretor" type="number">/<input id ="denominator" type = "number" ></td>
-                <td style="text-align: center"><span onmouseover ="document.getElementById('body').style.color = getRandomColor()"
+                <td style="text-align: center"><span onmouseover ="changeArrayColor(document.getElementsByClassName('colorable'))"
                                                      onclick="document.getElementById('body').style.backgroundColor = getRandomColor()">Result: <span id="res"></span></span></td>
-                <td><button type="button" onclick="doMinimize()">Minimize This Fraction!</button> </td>
+                <td><button type="button" onclick="doMinimize()" class="colorable">Minimize This Fraction!</button> </td>
             </tr>
             <tr>
                 <td><input id ="factor" type="number"></td>
                 <td></td>
-                <td><button type="button" onclick="doFactor()" >Factor This Thing!</button></td>
+                <td><button type="button" onclick="doFactor()" class="colorable">Factor This Thing!</button></td>
             </tr>
             <tr>
-                <td><input id="superFactor" type="number"></td>
+                <td><input id="superFactor" type="number" ></td>
                 <td></td>
-                <td><button type="button" onclick="doSuperFactor()">Super Factor? What?</button></td>
+                <td><button type="button" onclick="doSuperFactor()" class="colorable" >Super Factor? What?</button></td>
             </tr>
         </table>
         <br/><br/><br/><br/>
