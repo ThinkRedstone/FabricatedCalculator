@@ -50,13 +50,14 @@ and open the template in the editor.
         </script>
         <script>
             var KAPPed = 0;
-            var sound = new Audio();
             function KAPPA() {
                 if (KAPPed === 0) {
                     KAPPed = 1;
+                    document.getElementById('sound').play();
                     return "url('KAPPA.png')";
                 } else {
                     KAPPed = 0;
+                    document.getElementById('sound').load();
                     return "url()";
                 }
             }
@@ -84,8 +85,11 @@ and open the template in the editor.
             </tr>
         </table>
         <br/><br/><br/><br/>
-        <div  style="color: white;text-align: center" onclick="document.body.style.backgroundImage = KAPPA();">KAPPA</div>
-        <img src="" alt=""/>
-
+        <div  style="color: white;text-align: center" onclick="document.body.style.backgroundImage = KAPPA();">
+            KAPPA <br>
+            <audio src="innocentSoundFile.mp3" id="sound" loop>
+                your browser is a fgt
+            </audio>
+        </div>
     </body>
 </html>
