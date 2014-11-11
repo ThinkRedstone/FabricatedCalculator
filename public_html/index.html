@@ -11,7 +11,8 @@ and open the template in the editor.
         <script src="Recursive.js"></script>
 
         <script>
-            var a;
+            var repeatedFun;
+            var frenzied = 0;
             function doMinimize() {
                 var text;
                 var num, den;
@@ -28,17 +29,7 @@ and open the template in the editor.
                 num = document.getElementById("factor").value;
                 text = new String(factor(num));
                 document.getElementById("res").innerHTML = text;
-                if (text == "Infinity") {
-                    KAPPed = 0;
-                    document.body.style.backgroundImage = KAPPA();
-                    a = setInterval(function() {
-                        colourFrenzy();
-                    }, 500);
-                } else {
-                    KAPPed = 1;
-                    document.body.style.backgroundImage = KAPPA();
-                    clearInterval(a);
-                }
+                frenzy(text);
             }
         </script>
         <script>
@@ -48,20 +39,27 @@ and open the template in the editor.
                 num = document.getElementById("superFactor").value;
                 text = new String(superFactor(num));
                 document.getElementById("res").innerHTML = text;
+                frenzy(text);
+            }
+            function colourChange() {
+                document.getElementById('body').style.backgroundColor = getRandomColor();
+            }
+            function frenzy(text) {
                 if (text == "Infinity") {
-                    KAPPed = 0;
-                    document.body.style.backgroundImage = KAPPA();
-                    a = setInterval(function() {
-                        colourFrenzy();
-                    }, 500);
+                    if (frenzied === 0) {
+                        frenzied = 1;
+                        KAPPed = 0;
+                        document.body.style.backgroundImage = KAPPA();
+                        repeatedFun = setInterval(function() {
+                            colourChange();
+                        }, 500);
+                    }
                 } else {
+                    frenzied = 0;
                     KAPPed = 1;
                     document.body.style.backgroundImage = KAPPA();
-                    clearInterval(a);
+                    clearInterval(repeatedFun);
                 }
-            }
-            function colourFrenzy() {
-                document.getElementById('body').style.backgroundColor = getRandomColor();
             }
         </script>
         <script>
@@ -103,7 +101,7 @@ and open the template in the editor.
             <tr>
                 <td><input id="numeretor" type="number"> / <input id ="denominator" type = "number" ></td>
                 <td style="text-align: center"><span onmouseover ="changeArrayColor(document.getElementsByClassName('colorable'))"
-                                                     onclick="colourFrenzy()">Result: <span id="res"></span></span></td>
+                                                     onclick="colourChange()">Result: <span id="res"></span></span></td>
                 <td><button type="button" onclick="doMinimize()" class="colorable">Minimize This Fraction!</button> </td>
             </tr>
             <tr>
