@@ -11,7 +11,8 @@ and open the template in the editor.
         <script src="Recursive.js"></script>
 
         <script>
-            var repeatedFun;
+            var repeatedFunA;
+            var repeatedFunB;
             var frenzied = 0;
             function doMinimize() {
                 var text;
@@ -44,6 +45,18 @@ and open the template in the editor.
             function colourChange() {
                 document.getElementById('body').style.backgroundColor = getRandomColor();
             }
+            function  textChange() {
+                document.getElementById('res').innerHTML = randomString(6);
+
+            }
+            function randomString(len) {
+                var chars = '1234567890-=qwertyuiop[]asdfghjkl;zxcvbnm,.'.split('');
+                var text = ' ';
+                for (var i = 0; i < len; i++) {
+                    text += chars[Math.floor(Math.random() * chars.length)];
+                }
+                return text;
+            }
             function frenzy(text) {
                 if (text == "Infinity") {
                     if (frenzied === 0) {
@@ -51,16 +64,20 @@ and open the template in the editor.
                         KAPPed = 0;
                         document.getElementById('darude').style.visibility = "visible";
                         document.body.style.backgroundImage = KAPPA();
-                        repeatedFun = setInterval(function() {
+                        repeatedFunA = setInterval(function() {
                             colourChange();
                         }, 500);
+                        repeatedFunB = setInterval(function() {
+                            textChange();
+                        }, 200);
+                    } else {
+                        frenzied = 0;
+                        KAPPed = 1;
+                        document.getElementById('darude').style.visibility = "hidden";
+                        document.body.style.backgroundImage = KAPPA();
+                        clearInterval(repeatedFunA);
+                        clearInterval(repeatedFunB);
                     }
-                } else {
-                    frenzied = 0;
-                    KAPPed = 1;
-                    document.getElementById('darude').style.visibility = "hidden";
-                    document.body.style.backgroundImage = KAPPA();
-                    clearInterval(repeatedFun);
                 }
             }
         </script>
@@ -102,8 +119,12 @@ and open the template in the editor.
         <table class="centerH">
             <tr>
                 <td><input id="numeretor" type="number"> / <input id ="denominator" type = "number" ></td>
-                <td style="text-align: center"><span onmouseover ="changeArrayColor(document.getElementsByClassName('colorable'))"
-                                                     onclick="colourChange()">Result: <span id="res"></span></span></td>
+                <td style="text-align: center;"><span onmouseover ="changeArrayColor(document.getElementsByClassName('colorable'))"
+                                                      onclick="document.getElementById('body').style.backgroundColor = getRandomColor();">
+                        Result: 
+                        <span id="res"></span>
+                    </span>
+                </td>
                 <td><button type="button" onclick="doMinimize()" class="colorable">Minimize This Fraction!</button> </td>
             </tr>
             <tr>
@@ -125,7 +146,7 @@ and open the template in the editor.
                 your browser is Explorer's level of bad. y u do dis 2 urself?
             </audio>
         </div>
-        <button class ="centerH" id="darude" style="visibility: hidden;" onclick="window.open('https://www.youtube.com/watch?v=EVsudzwfI2U');
+        <button id="darude" class="centerH" style="visibility: hidden;width: 178px;" onclick="window.open('https://www.youtube.com/watch?v=EVsudzwfI2U');
                 frenzy(1)">Stop the madness</button>
     </body>
 </html>
