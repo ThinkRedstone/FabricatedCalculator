@@ -11,6 +11,7 @@ and open the template in the editor.
         <script src="Recursive.js"></script>
 
         <script>
+            var a;
             function doMinimize() {
                 var text;
                 var num, den;
@@ -27,6 +28,17 @@ and open the template in the editor.
                 num = document.getElementById("factor").value;
                 text = new String(factor(num));
                 document.getElementById("res").innerHTML = text;
+                if (text == "Infinity") {
+                    KAPPed = 0;
+                    document.body.style.backgroundImage = KAPPA();
+                    a = setInterval(function() {
+                        colourFrenzy();
+                    }, 500);
+                } else {
+                    KAPPed = 1;
+                    document.body.style.backgroundImage = KAPPA();
+                    clearInterval(a);
+                }
             }
         </script>
         <script>
@@ -36,6 +48,20 @@ and open the template in the editor.
                 num = document.getElementById("superFactor").value;
                 text = new String(superFactor(num));
                 document.getElementById("res").innerHTML = text;
+                if (text == "Infinity") {
+                    KAPPed = 0;
+                    document.body.style.backgroundImage = KAPPA();
+                    a = setInterval(function() {
+                        colourFrenzy();
+                    }, 500);
+                } else {
+                    KAPPed = 1;
+                    document.body.style.backgroundImage = KAPPA();
+                    clearInterval(a);
+                }
+            }
+            function colourFrenzy() {
+                document.getElementById('body').style.backgroundColor = getRandomColor();
             }
         </script>
         <script>
@@ -73,11 +99,11 @@ and open the template in the editor.
     </head>
     <body style="font-size: x-large;" id = "body" class="colorable">
 
-        <table class="center">
+        <table class="centerH">
             <tr>
-                <td><input id="numeretor" type="number">/<input id ="denominator" type = "number" ></td>
+                <td><input id="numeretor" type="number"> / <input id ="denominator" type = "number" ></td>
                 <td style="text-align: center"><span onmouseover ="changeArrayColor(document.getElementsByClassName('colorable'))"
-                                                     onclick="document.getElementById('body').style.backgroundColor = getRandomColor()">Result: <span id="res"></span></span></td>
+                                                     onclick="colourFrenzy()">Result: <span id="res"></span></span></td>
                 <td><button type="button" onclick="doMinimize()" class="colorable">Minimize This Fraction!</button> </td>
             </tr>
             <tr>
