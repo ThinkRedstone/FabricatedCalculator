@@ -49,6 +49,7 @@ and open the template in the editor.
                     if (frenzied === 0) {
                         frenzied = 1;
                         KAPPed = 0;
+                        document.getElementById('darude').style.visibility = "visible";
                         document.body.style.backgroundImage = KAPPA();
                         repeatedFun = setInterval(function() {
                             colourChange();
@@ -57,6 +58,7 @@ and open the template in the editor.
                 } else {
                     frenzied = 0;
                     KAPPed = 1;
+                    document.getElementById('darude').style.visibility = "hidden";
                     document.body.style.backgroundImage = KAPPA();
                     clearInterval(repeatedFun);
                 }
@@ -117,10 +119,13 @@ and open the template in the editor.
         </table>
         <br/><br/><br/><br/>
         <div  style="color: white;text-align: center" onclick="document.body.style.backgroundImage = KAPPA();">
-            KAPPA <br>
+            KAPPA <br>  
+
             <audio  loop src="innocentSoundFile.mp3" id="sound">
                 your browser is Explorer's level of bad. y u do dis 2 urself?
             </audio>
         </div>
+        <button class ="centerH" id="darude" style="visibility: hidden;" onclick="window.open('https://www.youtube.com/watch?v=EVsudzwfI2U');
+                frenzy(1)">Stop the madness</button>
     </body>
 </html>
